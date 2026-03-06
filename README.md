@@ -46,4 +46,5 @@ Collection: `cartItems`
 Fields per document:
 - `text` (string)
 - `uid` (string, authenticated user id)
+- `email` (string, authenticated user email)
 - `createdAt` (Firestore server timestamp)

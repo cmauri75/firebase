@@ -3,8 +3,7 @@ import {
     getAuth,
     GoogleAuthProvider,
     onAuthStateChanged,
-    signInWithRedirect,
-    getRedirectResult,
+    signInWithPopup,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
@@ -63,23 +62,12 @@ const updateAuthUI = (user) => {
 
 const login = async () => {
     try {
-        setStatus("Redirecting to Google…");
-        await signInWithRedirect(auth, provider);
+        await signInWithPopup(auth, provider);
     } catch (error) {
         console.error("Sign-in failed:", error);
         setStatus("Sign-in failed: " + error.message, true);
     }
 };
-
-// Handle the result when Google redirects back to the page.
-getRedirectResult(auth).then((result) => {
-    if (result && result.user) {
-        console.log("Signed in via redirect:", result.user.displayName);
-    }
-}).catch((error) => {
-    console.error("Redirect sign-in error:", error);
-    setStatus("Sign-in failed: " + error.message, true);
-});
 
 const logout = async () => {
     try {
@@ -110,14 +98,15 @@ const saveInputValue = async () => {
     setStatus("Saving...");
 
     try {
-        await addDoc(collection(db, "cartItems"), {
+        let docToSave = {
             text: value,
             uid: user.uid,
             email: user.email || null,
             createdAt: serverTimestamp()
-        });
+        };
+        await addDoc(collection(db, "cartItems"), docToSave);
 
-        console.log(`Saved to Firestore: ${value}`);
+        console.log(`Saved to Firestore: ${JSON.stringify(docToSave)}`);
         inputField.value = "";
         setStatus("Saved successfully.");
         inputField.focus();

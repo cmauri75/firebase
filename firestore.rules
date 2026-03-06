@@ -5,7 +5,7 @@ service cloud.firestore {
     match /cartItems/{itemId} {
       // Require authenticated users and enforce uid ownership for cart item creation.
       allow create: if request.auth != null
-                    && request.resource.data.keys().hasOnly(['text', 'uid', 'createdAt'])
+                    && request.resource.data.keys().hasOnly(['text', 'uid', 'email', 'createdAt'])
                     && request.resource.data.text is string
                     && request.resource.data.text.size() > 0
                     && request.resource.data.text.size() <= 120
