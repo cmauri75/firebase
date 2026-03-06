@@ -60,6 +60,19 @@ h1 {
     font-size: 1rem;
 }
 
+.auth-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.user-info {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
 .input-row {
     display: flex;
     flex-wrap: wrap;
@@ -90,6 +103,22 @@ button {
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
     box-shadow: 0 8px 18px rgba(217, 119, 66, 0.25);
+}
+
+button.secondary {
+    background: #6f655f;
+    box-shadow: 0 8px 18px rgba(111, 101, 95, 0.2);
+}
+
+button.secondary:hover {
+    background: #5f5650;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 button:hover {

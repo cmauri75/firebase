@@ -14,8 +14,15 @@
             >
             <div class="content">
                 <h1>Add to Cart</h1>
-                <p class="subtitle">Type an item and press the button to save it in Firestore.</p>
-                <div class="input-row">
+                <p class="subtitle">Sign in, then type an item and save it to Firestore.</p>
+
+                <div class="auth-row">
+                    <button id="sign-in-button" type="button">Sign in with Google</button>
+                    <button id="sign-out-button" class="secondary" type="button" hidden>Sign out</button>
+                    <span id="user-info" class="user-info">Not signed in</span>
+                </div>
+
+                <div id="cart-form" class="input-row" hidden>
                     <label class="sr-only" for="input-field">Item</label>
                     <input type="text" id="input-field" placeholder="Bread">
                     <button id="add-button" type="button">Add to cart</button>

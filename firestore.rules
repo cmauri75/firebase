@@ -3,11 +3,13 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /cartItems/{itemId} {
-      // Allow anonymous writes only for well-formed new cart entries.
-      allow create: if request.resource.data.keys().hasOnly(['text', 'createdAt'])
+      // Require authenticated users and enforce uid ownership for cart item creation.
+      allow create: if request.auth != null
+                    && request.resource.data.keys().hasOnly(['text', 'uid', 'createdAt'])
                     && request.resource.data.text is string
                     && request.resource.data.text.size() > 0
                     && request.resource.data.text.size() <= 120
+                    && request.resource.data.uid == request.auth.uid
                     && request.resource.data.createdAt == request.time;
 
       // Client app does not need to read, edit, or delete entries.
