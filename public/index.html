@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Add to Cart</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <main class="page">
+        <section class="card">
+            <img
+                class="hero-image"
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=80"
+                alt="A cozy kitchen counter with fresh bread"
+            >
+            <div class="content">
+                <h1>Add to Cart</h1>
+                <p class="subtitle">Type an item and press the button to save it in Firestore.</p>
+                <div class="input-row">
+                    <label class="sr-only" for="input-field">Item</label>
+                    <input type="text" id="input-field" placeholder="Bread">
+                    <button id="add-button" type="button">Add to cart</button>
+                </div>
+                <p id="status-message" class="status" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
