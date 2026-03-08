@@ -9,13 +9,12 @@ import {
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "",
-    authDomain: "frontend-cf896.firebaseapp.com",
-    projectId: "frontend-cf896",
-    storageBucket: "frontend-cf896.firebasestorage.app",
-    messagingSenderId: "46858029237",
-    appId: "1:46858029237:web:9e555c69cf889d74ee96fc",
-    measurementId: "G-3ZKHMQX90F"
+    apiKey: "AIzaSyBMRqH6qH9NTKQXDTXhFJdbMmlN4AetIRw",
+    authDomain: "test-f8471.firebaseapp.com",
+    projectId: "test-f8471",
+    storageBucket: "test-f8471.firebasestorage.app",
+    messagingSenderId: "531967254427",
+    appId: "1:531967254427:web:f64ef9c7cf045b59e0cb3e"
 };
 
 // Initialize Firebase
