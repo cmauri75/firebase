@@ -9,7 +9,7 @@ import {
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC5NFl5o7A_toRx6DhdiwhVW6AdhRIucJI",
+    apiKey: "",
     authDomain: "frontend-cf896.firebaseapp.com",
     projectId: "frontend-cf896",
     storageBucket: "frontend-cf896.firebasestorage.app",
@@ -32,9 +32,10 @@ const signInButton = document.getElementById("sign-in-button");
 const signOutButton = document.getElementById("sign-out-button");
 const userInfo = document.getElementById("user-info");
 
-// Keep the sign-in button hidden while we wait for the auth state to resolve
-// so the user never sees a flash of the wrong UI.
+// Hide both the sign-in button and cart form until auth state resolves.
+// (also set via HTML hidden attribute as a hard default before JS loads)
 signInButton.hidden = true;
+cartForm.hidden = true;
 
 const setStatus = (message, isError = false) => {
     statusMessage.textContent = message;
@@ -54,8 +55,7 @@ const updateAuthUI = (user) => {
     // (e.g. "Signed out." set by logout()) visible if it is already shown.
     if (!signedIn) {
         setStatus("Sign in to save items.");
-    }
-    if (signedIn) {
+    } else {
         setStatus("");
     }
 };
